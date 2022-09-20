@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ShoppingListComponent} from "./components/shopping-list/shopping-list-component";
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
-import { RecipeComponent } from './components/recipe-list/recipe/recipe.component';
+import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
+import { RecipeComponent } from './components/recipes/recipe-list/recipe/recipe.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShoppingListEditComponent } from './components/shopping-list/shopping-list-edit/shopping-list-edit.component';
 import { ShoppingItemComponent } from './components/shopping-list/shopping-item/shopping-item.component';
+import { RecipeDetailsComponent } from './components/recipes/recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShoppingItemComponent } from './components/shopping-list/shopping-item/
     RecipeComponent,
     HeaderComponent,
     ShoppingListEditComponent,
-    ShoppingItemComponent
+    ShoppingItemComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,
