@@ -1,0 +1,19 @@
+img {
+    height: 100px;
+    width: 130px
+}
+div {
+    max-width: 70%;
+}
+@media screen and (max-width: 1200px) {
+    img {
+        height: 80px;
+        width: 80px
+    }
+}
+@media screen and (max-width: 1000px) {
+    img {
+        height: 100px;
+        width: 100px
+    }
+}
