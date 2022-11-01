@@ -48,8 +48,4 @@ export class RecipeService {
     getRecipes(){
         return this.recipes.slice();
     }
-    getSelectedRecipe(){
-        return this.recipeSelected;
-    }
-
 }
