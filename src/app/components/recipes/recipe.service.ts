@@ -9,7 +9,6 @@ export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>();
     private recipes: Recipe[] = [
         new Recipe(
-            10001,
             'Tortilla de patatas',
             'Classic Spanish omelette made with eggs and potatoes, optionally including onion. It is often served at room temperature as a tapa',
             'https://cdn.elcocinerocasero.com/imagen/receta/1000/2022-06-15-19-04-10/tortilla-de-patata.jpeg',
@@ -30,7 +29,6 @@ export class RecipeService {
                 {name: "eggs", amount: 5}]
         ),
         new Recipe(
-            10002,
             'Gazpacho',
             'Cold soup and drink made of raw, blended vegetables. It originated in the southern regions of the Iberian peninsula and spread into other areas in Spain and Portugal.',
             'https://www.acouplecooks.com/wp-content/uploads/2021/07/Gazpacho-002s.jpg',
@@ -51,6 +49,6 @@ export class RecipeService {
         return this.recipes.slice();
     }
     getRecipe(id) {
-        return this.recipes.find(recipe => recipe.id == id)
+        return this.recipes.slice()[id]
     }
 }
