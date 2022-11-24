@@ -1,7 +1,3 @@
-<div [ngClass]="{'col-md-12' : !selectedRecipe , 'col-md-6': selectedRecipe}">
-    <app-recipe-list></app-recipe-list>
-</div>
-<div class="col-md-6">
-    <app-recipe-details *ngIf="selectedRecipe; else nothing" [recipe]="selectedRecipe"></app-recipe-details>
-    <ng-template #nothing></ng-template>
+<div class="col-md-12">
+    <router-outlet></router-outlet>
 </div>
