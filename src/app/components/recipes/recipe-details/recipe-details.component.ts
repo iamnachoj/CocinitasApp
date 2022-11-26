@@ -13,7 +13,7 @@ import {RecipeService} from "../recipe.service";
 export class RecipeDetailsComponent implements OnInit {
      recipe: Recipe
      id : number
-     constructor(private shoppingListRecipe : ShoppingListService,
+    constructor(private shoppingListRecipe : ShoppingListService,
                  private route: ActivatedRoute,
                  private recipeService : RecipeService) {}
     ngOnInit() {
