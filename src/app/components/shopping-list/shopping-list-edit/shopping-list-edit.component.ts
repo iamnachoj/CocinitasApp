@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {Ingredient} from "../../../shared/ingredient.model";
+import {Component} from '@angular/core';
 import {ShoppingListService} from "../shopping-list.service";
 
 @Component({
