@@ -8,8 +8,13 @@ import {ShoppingListService} from "../shopping-list.service";
 })
 export class ShoppingListEditComponent {
   constructor(private shoppingListService: ShoppingListService) {}
+  showForm: boolean = false;
 
-  onAddIngredient(name, amount){
-     this.shoppingListService.insertNewIngredient({name, amount})
+  onSubmit(form){
+    const name = form.value.name;
+    const amount = form.value.amount;
+    this.shoppingListService.insertNewIngredient({name, amount})
+    this.showForm = false;
+    form.reset();
   }
 }
