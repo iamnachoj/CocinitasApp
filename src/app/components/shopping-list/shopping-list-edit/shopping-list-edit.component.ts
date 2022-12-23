@@ -46,8 +46,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   }
 
   onClear() {
-    this.shoppingListForm.reset();
-    this.editMode = false;
+    if (confirm('Are you sure you want to remove all the products from the shopping list?') === true){
+      this.shoppingListService.clearAll();
+      this.shoppingListForm.reset();
+      this.editMode = false;
+    }
   }
   onDelete(){
     this.shoppingListService.deleteIngredient(this.editedItemIndex)
