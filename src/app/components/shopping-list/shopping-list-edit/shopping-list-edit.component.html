@@ -10,16 +10,12 @@
                     <label for="amount">Amount</label>
                     <input type="text" id="amount" class="form-control" name="amount" required ngModel>
                 </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-success submitButton mr-5" type="submit" [disabled]="!f.valid">Add</button>
+                <div class="col-sm-4 console-panel">
+                    <button class="btn btn-success mr-5" type="submit" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+                    <button class="btn btn-danger mr-5" type="button">Delete</button>
+                    <button class="btn btn-primary mr-5" type="button">Clear list</button>
                 </div>
             </form>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <button class="btn btn-danger mr-5" type="button">Delete</button>
-                <button class="btn btn-primary mr-5" type="button">Clear</button>
-            </div>
         </div>
     </div>
 </div>
