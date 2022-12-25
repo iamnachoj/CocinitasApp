@@ -50,4 +50,8 @@ export class RecipeService {
     getRecipe(id) {
         return this.recipes.slice()[id]
     }
+    addRecipe(recipe){
+        this.recipes.push(recipe);
+        return this.recipes.slice();
+    }
 }
