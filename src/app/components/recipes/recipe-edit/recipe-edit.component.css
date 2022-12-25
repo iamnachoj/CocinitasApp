@@ -4,3 +4,18 @@
 .mr-5 {
     margin-right: 5px;
 }
+.validation-message {
+    color: red;
+}
+input.ng-invalid.ng-touched {
+    border: solid 1px red;
+}
+input.ng-valid.ng-touched {
+    border: solid 1px lawngreen;
+}
+textarea.ng-invalid.ng-touched {
+    border: solid 1px red;
+}
+textarea.ng-valid.ng-touched {
+    border: solid 1px lawngreen;
+}

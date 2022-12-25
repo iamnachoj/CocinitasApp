@@ -37,18 +37,18 @@ export class RecipeEditComponent implements OnInit {
             this.recipe = this.recipeService.getRecipe(this.id)
         }
         this.newRecipeForm = new FormGroup({
-            "name": new FormControl(this.recipe?.name),
-            "description": new FormControl(this.recipe?.description),
-            "imagePath": new FormControl(this.recipe?.imagePath),
-            "preparationDetails": new FormControl(this.recipe?.preparationDetails),
+            "name": new FormControl(this.recipe?.name, Validators.required),
+            "description": new FormControl(this.recipe?.description, Validators.required),
+            "imagePath": new FormControl(this.recipe?.imagePath, Validators.required),
+            "preparationDetails": new FormControl(this.recipe?.preparationDetails, Validators.required),
             "ingredients": new FormArray([])
         });
 
-        if(this.recipe.ingredients) {
+        if(this.recipe?.ingredients) {
            for(let i = 0; this.recipe.ingredients.length > i; i++ ){
                const control = new FormGroup({
-                   "name": new FormControl(this.recipe.ingredients[i]?.name),
-                   "amount": new FormControl(this.recipe.ingredients[i]?.amount),
+                   "name": new FormControl(this.recipe.ingredients[i]?.name, Validators.required),
+                   "amount": new FormControl(this.recipe.ingredients[i]?.amount, Validators.required),
                });
                (<FormArray>this.newRecipeForm.get('ingredients')).push(control);
            }
@@ -57,8 +57,8 @@ export class RecipeEditComponent implements OnInit {
 
     onNewIngredient() {
         const control = new FormGroup({
-            "name": new FormControl(null),
-            "amount": new FormControl(null),
+            "name": new FormControl(null, Validators.required),
+            "amount": new FormControl(null, Validators.required),
         });
         (<FormArray>this.newRecipeForm.get('ingredients')).push(control);
     }
@@ -72,7 +72,7 @@ export class RecipeEditComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.newRecipeForm.value);
+        console.log(this.newRecipeForm);
         this.recipeService.addRecipe(this.newRecipeForm.value);
     }
 }
