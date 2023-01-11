@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1>Create new Recipe</h1>
+        <h1>{{editMode ? 'Update recipe' : 'Add new recipe'}}</h1>
         <hr>
         <form [formGroup]="newRecipeForm" (ngSubmit)="onSubmit()">
             <div class="form-group col-xs-6">
@@ -47,7 +47,7 @@
                       class="validation-message">Preparation field required</span>
             </div>
             <div class="form-group col-xs-12">
-                <button type="submit" class="btn btn-success" [disabled]="newRecipeForm.invalid">Add new Recipe</button>
+                <button type="submit" class="btn btn-success" [disabled]="newRecipeForm.invalid">{{editMode ? 'Update' : 'Add'}}</button>
             </div>
         </form>
     </div>

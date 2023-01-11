@@ -47,11 +47,20 @@ export class RecipeService {
     getRecipes(){
         return this.recipes.slice();
     }
-    getRecipe(id) {
-        return this.recipes.slice()[id]
+    getRecipe(index) {
+        return this.recipes.slice()[index]
     }
     addRecipe(recipe){
         this.recipes.push(recipe);
         return this.recipes.slice();
+    }
+    updateRecipe(updatedRecipe, indexOfUpdatedRecipe) {
+        this.recipes[indexOfUpdatedRecipe] = {
+            ...this.recipes[indexOfUpdatedRecipe],
+            ...updatedRecipe
+        };
+    }
+    deleteRecipe(index){
+        this.recipes.splice(index, 1);
     }
 }
