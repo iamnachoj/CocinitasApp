@@ -10,7 +10,9 @@ export class HeaderComponent {
   constructor(private dataStorageService : DataStorageService) {
   }
   saveData() {
-    this.dataStorageService.saveRecipes();
+    if (confirm("Are you sure you want to save your recipes?")) {
+      this.dataStorageService.saveRecipes();
+    }
   }
 
   fetchData() {
