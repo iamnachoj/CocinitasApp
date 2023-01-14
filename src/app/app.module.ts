@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
 import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
         FormsModule,
         RouterOutlet,
         RouterLinkWithHref,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

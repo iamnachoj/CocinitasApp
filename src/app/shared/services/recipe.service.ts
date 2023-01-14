@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Recipe} from "../recipe.model";
+import {Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -43,6 +44,7 @@ export class RecipeService {
                 {name: "Garlic", amount: "2 cloves"},
                 {name: "Vinegar, oil and salt", amount: "2 spoons each, just 1 teaspoon of salt"}]
         )]
+    recipesChanged = new Subject<Recipe[]>();
 
     getRecipes(){
         return this.recipes.slice();
@@ -62,5 +64,9 @@ export class RecipeService {
     }
     deleteRecipe(index){
         this.recipes.splice(index, 1);
+    }
+    setRecipes(recipes : Recipe[]){
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice())
     }
 }
