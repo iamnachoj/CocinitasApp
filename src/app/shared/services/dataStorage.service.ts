@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Recipe} from "../recipe.model";
 import {RecipeService} from "./recipe.service";
-import {map} from "rxjs";
+import {map, tap} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -20,16 +20,18 @@ export class DataStorageService {
     }
 
     fetchRecipes(){
-        this.http.get<Recipe[]>('https://cocinitasapp-51803-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
-            .pipe(map( recipes => {
-                    if(!recipes){
+        return this.http.get<Recipe[]>('https://cocinitasapp-51803-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
+            .pipe(
+                map( storeRecipes => {
+                    if(!storeRecipes){
                         return []
                     }
-                   return recipes
-                }
-            ))
-            .subscribe(storedRecipes => {
-                this.recipeService.setRecipes(storedRecipes)
-            });
+                   return storeRecipes
+                    }
+                ),
+                tap(storedRecipes => {
+                    this.recipeService.setRecipes(storedRecipes)
+                })
+            )
     }
 }
