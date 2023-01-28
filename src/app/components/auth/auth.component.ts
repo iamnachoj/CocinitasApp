@@ -7,6 +7,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+  logIn = true;
 
   constructor() { }
 
@@ -15,5 +16,9 @@ export class AuthComponent implements OnInit {
 
   onLogin(f: NgForm) {
 
+  }
+
+  signupMode() {
+    this.logIn = !this.logIn
   }
 }

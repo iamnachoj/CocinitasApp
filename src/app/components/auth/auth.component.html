@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-1 col-md-4"></div>
         <div class="col-xs-10 col-md-4">
-            <h2>Login</h2>
+            <h2>{{logIn ? 'Log in' : 'Sign up'}}</h2>
             <form (ngSubmit)="onLogin(f)" #f="ngForm">
                 <div class="form-group">
                     <label for="username">Email</label>
@@ -25,9 +25,9 @@
                            ngModel
                     >
                 </div>
-                <button class="btn btn-primary" type="submit">Log in</button>
+                <button class="btn btn-primary" type="submit">{{logIn ? 'Log in' : 'Sign up'}}</button>
             </form>
-            <p>Not an user? <a routerLink="/signup">Sign up here</a>.</p>
+            <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a (click)="signupMode()">{{logIn ? 'log in' : 'sign up' }} here</a>.</p>
         </div>
         <div class="col-xs-1 col-md-4"></div>
     </div>

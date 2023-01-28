@@ -16,7 +16,6 @@ import {DropdownDirective} from "./shared/dropdown.directive";
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
 import {RecipeEditComponent} from './components/recipes/recipe-edit/recipe-edit.component';
 import {HttpClientModule} from "@angular/common/http";
-import {SignupComponent} from "./components/signup/signup.component";
 import {AuthComponent} from "./components/auth/auth.component";
 
 @NgModule({
@@ -31,7 +30,6 @@ import {AuthComponent} from "./components/auth/auth.component";
         RecipesComponent,
         DropdownDirective,
         RecipeEditComponent,
-        SignupComponent,
         AuthComponent,
     ],
     imports: [
