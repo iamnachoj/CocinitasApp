@@ -15,7 +15,8 @@ export class AuthComponent implements OnInit {
   }
 
   onLogin(f: NgForm) {
-
+    console.log(f.value)
+    f.reset()
   }
 
   signupMode() {

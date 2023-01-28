@@ -16,18 +16,21 @@
                     >
                 </div>
                 <div class="form-group">
-                    <label for="password">Email</label>
+                    <label for="password">Password</label>
                     <input type="password"
                            id="password"
                            class="form-control"
                            name="password"
                            required
-                           ngModel
+                           minlength="8"
+                              ngModel
                     >
                 </div>
-                <button class="btn btn-primary" type="submit">{{logIn ? 'Log in' : 'Sign up'}}</button>
+                <button [disabled]="!f.valid" class="btn btn-primary"
+                        type="submit">{{logIn ? 'Log in' : 'Sign up'}}</button>
             </form>
-            <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a (click)="signupMode()">{{logIn ? 'log in' : 'sign up' }} here</a>.</p>
+            <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a
+                    (click)="signupMode()">{{logIn ? 'log in' : 'sign up' }} here</a>.</p>
         </div>
         <div class="col-xs-1 col-md-4"></div>
     </div>
