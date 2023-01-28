@@ -1,29 +1,31 @@
 <nav class="row navbar navbar-default">
-  <header class="container-fluid">
-    <div class="navbar-header">
-<!--      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">-->
-<!--        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>-->
-<!--      </button>-->
-     <a href="#" class="navbar-brand"> El Cocinitas 🧑‍🍳</a>
-    </div>
-    <div class="navbar-collapse">
-       <ul class="nav navbar-nav">
-         <li routerLinkActive="active" ><a [routerLink]="['/recipes']">Recipes</a></li>
-         <li routerLinkActive="active" ><a [routerLink]="['/shopping-list']">Shopping List</a></li>
-       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" app-dropdown>
-          <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a style="cursor: pointer" (click)="saveData()">Saving Data</a>
-              <a style="cursor: pointer" (click)="fetchData()">Fetching Data</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </header>
+    <header class="container-fluid">
+        <div class="navbar-header">
+            <!--      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">-->
+            <!--        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>-->
+            <!--      </button>-->
+            <a href="#" class="navbar-brand"> El Cocinitas 🧑‍🍳</a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a [routerLink]="['/recipes']">Recipes</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/shopping-list']">Shopping List</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="/auth">Log in</a></li>
+                <li class="dropdown" app-dropdown>
+                    <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage account <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a style="cursor: pointer" (click)="saveData()">Saving Data</a>
+                            <a style="cursor: pointer" (click)="fetchData()">Fetching Data</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
 </nav>
 
 

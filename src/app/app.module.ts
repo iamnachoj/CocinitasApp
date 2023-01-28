@@ -14,22 +14,26 @@ import {RecipesComponent} from './components/recipes/recipes.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
-import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
+import {RecipeEditComponent} from './components/recipes/recipe-edit/recipe-edit.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SignupComponent} from "./components/signup/signup.component";
+import {AuthComponent} from "./components/auth/auth.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ShoppingListComponent,
-    RecipeListComponent,
-    RecipeComponent,
-    HeaderComponent,
-    ShoppingListEditComponent,
-    RecipeDetailsComponent,
-    RecipesComponent,
-    DropdownDirective,
-    RecipeEditComponent
-  ],
+    declarations: [
+        AppComponent,
+        ShoppingListComponent,
+        RecipeListComponent,
+        RecipeComponent,
+        HeaderComponent,
+        ShoppingListEditComponent,
+        RecipeDetailsComponent,
+        RecipesComponent,
+        DropdownDirective,
+        RecipeEditComponent,
+        SignupComponent,
+        AuthComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -40,7 +44,8 @@ import {HttpClientModule} from "@angular/common/http";
         ReactiveFormsModule,
         HttpClientModule
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
