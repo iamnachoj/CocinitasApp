@@ -30,7 +30,9 @@
                         type="submit">{{logIn ? 'Log in' : 'Sign up'}}</button>
             </form>
             <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a
-                    (click)="signupMode()">{{logIn ? 'log in' : 'sign up' }} here</a>.</p>
+                (click)="signupMode()">{{logIn ? 'sign up' : 'log in'  }} here</a>.</p>
+            <div *ngIf="error" class="alert alert-danger"><p>{{error}}</p></div>
+            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
         </div>
         <div class="col-xs-1 col-md-4"></div>
     </div>
