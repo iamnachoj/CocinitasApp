@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, throwError} from "rxjs";
+import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {AuthResponseData} from "../auth-response";
+import {User} from "../user.model";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    user = new BehaviorSubject<User>(null)
 
     constructor(private http: HttpClient) {
     }
@@ -21,6 +23,9 @@ export class AuthService {
             }).pipe(
                 catchError((errorRes) => {
                     return this.handleError(errorRes)
+                }),
+                tap((resData: AuthResponseData) => {
+                    this.handleUserAuth(resData)
                 })
             )
     }
@@ -28,15 +33,18 @@ export class AuthService {
     login(email: string, password: string) {
         return this.http
             .post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?' +
-            'key=AIzaSyCykHq0COQWv9OnJoRRMEYweB1abwf3gJY', {
-            email: email,
-            password: password,
-            returnSecureToken: true,
-        }).pipe(
-            catchError((errorRes) => {
-                return this.handleError(errorRes)
-            })
-        )
+                'key=AIzaSyCykHq0COQWv9OnJoRRMEYweB1abwf3gJY', {
+                email: email,
+                password: password,
+                returnSecureToken: true,
+            }).pipe(
+                catchError((errorRes) => {
+                    return this.handleError(errorRes)
+                }),
+                tap((resData: AuthResponseData) => {
+                    this.handleUserAuth(resData)
+                })
+            )
     }
 
     private handleError(errorRes) {
@@ -63,5 +71,12 @@ export class AuthService {
                 break;
         }
         return throwError(() => errorMessage)
+    }
+
+    private handleUserAuth(resData) {
+        const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000)
+        const user = new User(resData.email, resData.localId, resData.idToken, expirationDate)
+        this.user.next(user)
+        console.log('the user:', user)
     }
 }

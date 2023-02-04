@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth.service";
 import {Observable} from "rxjs";
 import {AuthResponseData} from "../../shared/auth-response";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent implements OnInit {
     error = '';
     AuthObservable: Observable<AuthResponseData>
 
-    constructor(private auth: AuthService) {
+    constructor(private auth: AuthService, private router : Router) {
     }
 
     ngOnInit(): void {
@@ -37,9 +38,10 @@ export class AuthComponent implements OnInit {
         }
         this.AuthObservable.subscribe({
             next: (responseData) => {
-                console.log(responseData)
+                console.log('the response data', responseData)
                 this.isLoading = false
                 f.reset()
+                this.router.navigate(['/recipes']).then()
             },
             error: (errorMessage) => {
                 this.error = errorMessage;
