@@ -17,30 +17,24 @@ export class DataStorageService {
         const recipes = this.recipeService.getRecipes();
         this.http.put('https://cocinitasapp-51803-default-rtdb.europe-west1.firebasedatabase.app/recipes.json', recipes)
             .subscribe(response => {
-                console.log(response)
             })
 
     }
 
     fetchRecipes() {
-       return this.authService.user.pipe(
-            take(1),
-        exhaustMap((user: User) => {
-            return this.http.get<Recipe[]>('https://cocinitasapp-51803-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
-                {
-                    params: new HttpParams().set('auth', user.token)
-                })
-        }),
-        map(storeRecipes => {
-                if (!storeRecipes) {
-                    return []
+        return this.http.get<Recipe[]>(
+            'https://cocinitasapp-51803-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
+            .pipe(
+            map(storeRecipes => {
+                    if (!storeRecipes) {
+                        return []
+                    }
+                    return storeRecipes
                 }
-                return storeRecipes
-            }
-        ),
-        tap((recipes : Recipe[]) => {
-            this.recipeService.setRecipes(recipes)
-        }))
-           .subscribe()
+            ),
+            tap((recipes: Recipe[]) => {
+                this.recipeService.setRecipes(recipes)
+            }))
+            .subscribe()
     }
 }
