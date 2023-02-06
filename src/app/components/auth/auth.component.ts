@@ -38,7 +38,6 @@ export class AuthComponent implements OnInit {
         }
         this.AuthObservable.subscribe({
             next: (responseData) => {
-                console.log('the response data', responseData)
                 this.isLoading = false
                 f.reset()
                 this.router.navigate(['/recipes']).then()
