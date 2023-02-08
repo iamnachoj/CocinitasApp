@@ -13,7 +13,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="!isLogged"><a routerLink="/auth">Log in</a></li>
-                <li *ngIf="isLogged"><a routerLink="/auth">Log out</a></li>
+                <li *ngIf="isLogged"><a routerLink="/auth" (click)="onLogout()">Log out</a></li>
                 <li *ngIf="isLogged" class="dropdown" app-dropdown>
                     <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage account <span
                             class="caret"></span></a>
