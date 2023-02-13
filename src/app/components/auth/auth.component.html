@@ -32,6 +32,7 @@
             <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a
                 (click)="signupMode()">{{logIn ? 'sign up' : 'log in'  }} here</a>.</p>
             <div *ngIf="error" class="alert alert-danger"><p>{{error}}</p></div>
+<!--                <app-alert [message]="error" *ngIf="error"></app-alert>-->
             <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
         </div>
         <div class="col-xs-1 col-md-4"></div>
