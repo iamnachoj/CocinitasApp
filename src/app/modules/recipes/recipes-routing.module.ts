@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
-import {Router, RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {RecipesComponent} from "./components/recipes.component";
-import {AuthResolver} from "../../resolvers/auth.resolver";
-import {AuthGuard} from "../../guards/auth.guard";
+import {AuthResolver} from "../../core/resolvers/auth.resolver";
+import {AuthGuard} from "../../core/guards/auth.guard";
 import {RecipeListComponent} from "./components/recipe-list/recipe-list.component";
-import {RecipeResolver} from "../../resolvers/recipe.resolver";
+import {RecipeResolver} from "../../core/resolvers/recipe.resolver";
 import {RecipeEditComponent} from "./components/recipe-edit/recipe-edit.component";
 import {RecipeDetailsComponent} from "./components/recipe-details/recipe-details.component";
 

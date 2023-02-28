@@ -1,10 +1,10 @@
 import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, Output} from '@angular/core';
-import {Ingredient} from "../../shared/ingredient.model";
-import {ShoppingListService} from "../../shared/services/shopping-list.service";
+import {Ingredient} from "../../../../shared/ingredient.model";
+import {ShoppingListService} from "../../../../shared/services/shopping-list.service";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-shopping-list',
+  selector: 'app-components',
   templateUrl: './shopping-list-component.html',
   styleUrls: ['./shopping-list-component.css']
 })

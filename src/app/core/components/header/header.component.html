@@ -9,7 +9,7 @@
         <div class="navbar-collapse">
             <ul class="nav navbar-nav">
                 <li *ngIf="isLogged"  routerLinkActive="active"><a [routerLink]="['/recipes']">Recipes</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['/shopping-list']">Shopping List</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/components']">Shopping List</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="!isLogged"><a routerLink="/auth">Log in</a></li>
