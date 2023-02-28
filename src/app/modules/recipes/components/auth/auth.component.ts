@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AuthService} from "../../shared/services/auth.service";
+import {AuthService} from "../../../../shared/services/auth.service";
 import {Observable} from "rxjs";
-import {AuthResponseData} from "../../shared/auth-response";
+import {AuthResponseData} from "../../../../shared/auth-response";
 import {Router} from "@angular/router";
 
 @Component({
