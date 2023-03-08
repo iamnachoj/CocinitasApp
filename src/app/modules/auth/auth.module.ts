@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {AuthComponent} from "../recipes/components/auth/auth.component";
 import {LoadingSpinnerComponent} from "../../shared/loading-spinner/loading-spinner.component";
 import {AlertComponent} from "../../core/components/alert/alert.component";
-import {FormsModule} from "@angular/forms";
 import {AuthRoutingModule} from "./auth-routing.module";
-
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -16,11 +14,9 @@ import {AuthRoutingModule} from "./auth-routing.module";
   ],
   exports: [
     LoadingSpinnerComponent,
-    AuthRoutingModule
   ],
   imports: [
-    FormsModule,
-    CommonModule,
+    SharedModule,
     AuthRoutingModule
   ]
 })
