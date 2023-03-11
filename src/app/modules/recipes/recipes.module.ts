@@ -8,6 +8,7 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {DropdownDirective} from "../../shared/dropdown.directive";
 import {recipesRoutingModule} from "./recipes-routing.module";
 import {SharedModule} from "../../shared/shared.module";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -17,14 +18,10 @@ import {SharedModule} from "../../shared/shared.module";
     RecipeComponent,
     RecipeDetailsComponent,
     RecipeEditComponent,
-    DropdownDirective,
-  ],
-  exports: [
-    DropdownDirective,
   ],
   imports: [
     SharedModule,
-    AppRoutingModule,
+    CoreModule,
     recipesRoutingModule,
   ]
 })

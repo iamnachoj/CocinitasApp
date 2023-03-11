@@ -10,7 +10,7 @@ import {RecipeDetailsComponent} from "./components/recipe-details/recipe-details
 
 const recipeRoutes: Routes = [
     {
-        path: "recipes", component: RecipesComponent, resolve: [AuthResolver], canActivate: [AuthGuard],
+        path: "", component: RecipesComponent, resolve: [AuthResolver], canActivate: [AuthGuard],
         children:
             [
                 {path: "", component: RecipeListComponent, resolve: [RecipeResolver]},

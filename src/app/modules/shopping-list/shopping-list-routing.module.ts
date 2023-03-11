@@ -3,7 +3,7 @@ import {ShoppingListComponent} from "./components/shopping-list/shopping-list-co
 import {RouterModule} from "@angular/router";
 
 const shoppingListRoutes = [
-    {path: "components", component: ShoppingListComponent},
+    {path: "", component: ShoppingListComponent},
 ]
 @NgModule({
     imports: [RouterModule.forChild(shoppingListRoutes)],
