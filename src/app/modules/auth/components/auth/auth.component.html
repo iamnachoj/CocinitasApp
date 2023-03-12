@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1 col-md-4"></div>
+        <div class="col-xs-10 col-md-4">
+            <h2>{{logIn ? 'Log in' : 'Sign up'}}</h2>
+            <form (ngSubmit)="onLogin(f)" #f="ngForm">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="email"
+                           required
+                           email
+                           class="form-control"
+                           id="username"
+                           name="email"
+                           ngModel
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password"
+                           id="password"
+                           class="form-control"
+                           name="password"
+                           required
+                           minlength="8"
+                              ngModel
+                    >
+                </div>
+                <button [disabled]="!f.valid" class="btn btn-primary"
+                        type="submit">{{logIn ? 'Log in' : 'Sign up'}}</button>
+            </form>
+            <p>{{logIn ? 'Not an user? ' : 'Already an user? '}}<a
+                (click)="signupMode()">{{logIn ? 'sign up' : 'log in'  }} here</a>.</p>
+            <div *ngIf="error" class="alert alert-danger"><p>{{error}}</p></div>
+<!--                <app-alert [message]="error" *ngIf="error"></app-alert>-->
+            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+        </div>
+        <div class="col-xs-1 col-md-4"></div>
+    </div>
+</div>
