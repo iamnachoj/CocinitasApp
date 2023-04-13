@@ -8,6 +8,8 @@ import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptorService} from "./shared/services/auth-interceptor.service";
 import {CoreModule} from "./core/core.module";
+import { StoreModule } from '@ngrx/store';
+import {shoppingListReducer} from "./shared/store/shopping-list.reducer";
 
 @NgModule({
     declarations: [
@@ -19,7 +21,11 @@ import {CoreModule} from "./core/core.module";
         AppRoutingModule,
         RouterOutlet,
         RouterLinkWithHref,
-        CoreModule
+        CoreModule,
+        StoreModule.forRoot(
+            {shoppingList: shoppingListReducer},
+            {}
+        ),
     ],
     providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}] ,
     bootstrap: [AppComponent]
