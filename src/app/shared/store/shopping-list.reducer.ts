@@ -1,6 +1,16 @@
 import {Ingredient} from "../ingredient.model";
 import * as shoppingListActions from "./shopping-list.actions";
 
+export interface AppState {
+    shoppingList: ShoppingListState
+}
+
+export interface ShoppingListState {
+    ingredients: Ingredient[],
+    editedIngredient: Ingredient,
+    editedIngredientIndex: number
+}
+
 const initialState = {
     ingredients: [
         new Ingredient('Water', 3),
@@ -48,6 +58,18 @@ export function shoppingListReducer(
                 ingredients: state.ingredients.filter((ig, igIndex) => {
                     return igIndex !== action.payload.index
                 })
+            }
+        case shoppingListActions.START_EDIT:
+            return {
+                ...state,
+                editedIngredientIndex: action.payload,
+                editedIngredient: {...state.ingredients[action.payload]}
+            }
+        case shoppingListActions.STOP_EDIT:
+            return {
+                ...state,
+                editedIngredientIndex: -1,
+                editedIngredient: null
             }
         default:
             return state
