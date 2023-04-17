@@ -7,7 +7,7 @@ export interface AppState {
 
 export interface ShoppingListState {
     ingredients: Ingredient[],
-    editedIngredient: Ingredient,
+    editedIngredient: Ingredient | null,
     editedIngredientIndex: number
 }
 
@@ -15,7 +15,9 @@ const initialState = {
     ingredients: [
         new Ingredient('Water', 3),
         new Ingredient('Beer', 6)
-    ]
+    ],
+    editedIngredient: null,
+    editedIngredientIndex: -1
 }
 
 export function shoppingListReducer(
@@ -40,13 +42,13 @@ export function shoppingListReducer(
                 ]
             }
         case shoppingListActions.UPDATE_INGREDIENT:
-            const ingredient = state.ingredients[action.payload.index]
+            const ingredient = state.ingredients[state.editedIngredientIndex]
             const updatedIngredient = {
                 ...ingredient,
-                ...action.payload.ingredient
+                ...action.ingredient
             };
             const updatedIngredients = [...state.ingredients];
-            updatedIngredients[action.payload.index] = updatedIngredient;
+            updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
 
             return {
                 ...state,
@@ -56,7 +58,7 @@ export function shoppingListReducer(
             return {
                 ...state,
                 ingredients: state.ingredients.filter((ig, igIndex) => {
-                    return igIndex !== action.payload.index
+                    return igIndex !== state.editedIngredientIndex
                 })
             }
         case shoppingListActions.START_EDIT:
@@ -68,6 +70,13 @@ export function shoppingListReducer(
         case shoppingListActions.STOP_EDIT:
             return {
                 ...state,
+                editedIngredientIndex: -1,
+                editedIngredient: null
+            }
+        case shoppingListActions.DELETE_ALL_INGREDIENTS:
+            return {
+                ...state,
+                ingredients: [],
                 editedIngredientIndex: -1,
                 editedIngredient: null
             }

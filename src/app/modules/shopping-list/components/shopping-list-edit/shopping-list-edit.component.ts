@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
-import {ShoppingListService} from "../../../../shared/services/shopping-list.service";
 import {Ingredient} from "../../../../shared/ingredient.model";
 import {NgForm} from "@angular/forms";
 import {Store} from "@ngrx/store";
@@ -16,11 +15,9 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   @ViewChild('f', {static: false}) shoppingListForm: NgForm;
   subscription: Subscription
   editMode = false;
-  editedItemIndex: number;
   editedItem: Ingredient;
 
-  constructor(private shoppingListService: ShoppingListService,
-              private store: Store<fromShoppingList.AppState>) {}
+  constructor(private store: Store<fromShoppingList.AppState>) {}
 
   ngOnInit() {
     this.subscription = this.store.select('shoppingList').subscribe(stateData => {
@@ -43,11 +40,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     }
       if(this.editMode){
         this.store.dispatch(new ShoppingListActions
-            .updateIngredient({index : this.editedItemIndex, ingredient}))
+            .updateIngredient(ingredient));
       } else {
-        this.store.dispatch(new ShoppingListActions.addNewIngredient(ingredient))
+        this.store.dispatch(new ShoppingListActions.addNewIngredient(ingredient));
       }
-    this.editMode = false;
+    this.store.dispatch(new ShoppingListActions.stopEdit());
     form.reset();
   }
   ngOnDestroy(){
@@ -56,13 +53,13 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
 
   onClear() {
     if (confirm('Are you sure you want to remove all the products from the shopping list?') === true){
-      this.shoppingListService.clearAll();
+      this.store.dispatch(new ShoppingListActions.deleteAllIngredients());
       this.shoppingListForm.reset();
       this.store.dispatch(new ShoppingListActions.stopEdit());
     }
   }
   onDelete(){
-    this.store.dispatch(new ShoppingListActions.deleteIngredient({index: this.editedItemIndex}));
+    this.store.dispatch(new ShoppingListActions.deleteIngredient());
     this.shoppingListForm.reset();
     this.store.dispatch(new ShoppingListActions.stopEdit());
   }
