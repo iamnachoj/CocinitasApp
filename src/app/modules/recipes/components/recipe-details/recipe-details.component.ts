@@ -3,8 +3,8 @@ import {Recipe} from "../../../../shared/recipe.model";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RecipeService} from "../../../../shared/services/recipe.service";
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../../shared/store/shopping-list.reducer";
-import * as ShoppingListActions from "../../../../shared/store/shopping-list.actions";
+import * as ShoppingListActions from "../../../../shared/store/shopping-list/shopping-list.actions";
+import {AppState} from "../../../../shared/store/app.reducer";
 
 @Component({
   selector: 'app-recipe-details',

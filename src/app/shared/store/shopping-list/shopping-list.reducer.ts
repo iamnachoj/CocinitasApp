@@ -1,17 +1,13 @@
-import {Ingredient} from "../ingredient.model";
+import {Ingredient} from "../../ingredient.model";
 import * as shoppingListActions from "./shopping-list.actions";
 
-export interface AppState {
-    shoppingList: ShoppingListState
-}
-
-export interface ShoppingListState {
+export interface State {
     ingredients: Ingredient[],
     editedIngredient: Ingredient | null,
     editedIngredientIndex: number
 }
 
-const initialState = {
+const initialState : State = {
     ingredients: [
         new Ingredient('Water', 3),
         new Ingredient('Beer', 6)

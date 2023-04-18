@@ -4,12 +4,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './core/components/header/header.component';
-import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {AuthInterceptorService} from "./shared/services/auth-interceptor.service";
-import {CoreModule} from "./core/core.module";
+import {RouterLinkWithHref, RouterOutlet} from '@angular/router';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptorService} from './shared/services/auth-interceptor.service';
+import {CoreModule} from './core/core.module';
 import { StoreModule } from '@ngrx/store';
-import {shoppingListReducer} from "./shared/store/shopping-list.reducer";
+import * as fromAppReducer from './shared/store/app.reducer';
 
 @NgModule({
     declarations: [
@@ -22,10 +22,7 @@ import {shoppingListReducer} from "./shared/store/shopping-list.reducer";
         RouterOutlet,
         RouterLinkWithHref,
         CoreModule,
-        StoreModule.forRoot(
-            {shoppingList: shoppingListReducer},
-            {}
-        ),
+        StoreModule.forRoot(fromAppReducer.ReducerMap),
     ],
     providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}] ,
     bootstrap: [AppComponent]
