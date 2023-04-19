@@ -5,15 +5,21 @@ import {AuthResponseData} from "../auth-response";
 import {User} from "../user.model";
 import {Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
+import {Store} from "@ngrx/store";
+import {AppState} from "../store/app.reducer";
+import * as fromAuthActions from '../store/auth/auth.actions';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    user = new BehaviorSubject<User>(null)
     private tokenExpirationTimer: any;
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private store: Store<AppState>
+        ) {
     }
 
     signup(email: string, password: string) {
@@ -51,11 +57,11 @@ export class AuthService {
     }
 
     logout() {
-        this.user.next(null);
+        this.store.dispatch(new fromAuthActions.Logout());
         localStorage.removeItem("userData");
         this.router.navigate(['/auth']);
         if(this.tokenExpirationTimer){
-            clearTimeout(this.tokenExpirationTimer)
+            clearTimeout(this.tokenExpirationTimer);
         }
         this.tokenExpirationTimer = null;
     }
@@ -71,7 +77,7 @@ export class AuthService {
             userData.idToken
         );
         if (loadedUser.token) {
-            this.user.next(loadedUser);
+            this.store.dispatch(new fromAuthActions.Login(loadedUser));
         }
     }
 
@@ -108,6 +114,6 @@ export class AuthService {
     private handleUserAuth(resData) {
         const user = new User(resData.email, resData.localId, resData.idToken)
         localStorage.setItem("userData", JSON.stringify(resData));
-        this.user.next(user)
+        this.store.dispatch(new fromAuthActions.Login(user))
     }
 }
